@@ -16,6 +16,11 @@ public class SleepTrackerApp {
             new ChronotypeFunction());
 
     public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            System.out.println("Укажите путь к файлу с логом сна в аргументах запуска.");
+            return;
+        }
+
         List<SleepingSession> sessions = Files.readAllLines(Path.of(args[0])).stream()
                 .filter(line -> !line.isBlank())
                 .map(SleepingSession::parse)

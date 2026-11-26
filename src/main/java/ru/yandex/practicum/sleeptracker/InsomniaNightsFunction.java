@@ -12,8 +12,8 @@ public class InsomniaNightsFunction implements Function<List<SleepingSession>, S
             return new SleepAnalysisResult("Количество бессонных ночей", 0L);
         }
 
-        SleepingSession first = sessions.get(0);
-        SleepingSession last = sessions.get(sessions.size() - 1);
+        SleepingSession first = sessions.getFirst();
+        SleepingSession last = sessions.getLast();
 
         LocalDate startDate = first.getStart().toLocalDate();
         LocalDate firstNight = first.getStart().getHour() < 12 ? startDate : startDate.plusDays(1);
